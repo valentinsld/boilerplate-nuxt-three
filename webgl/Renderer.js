@@ -14,7 +14,7 @@ export default class Renderer {
 
     // Debug
     if (this.debug) {
-      this.debugFolder = this.debug.addFolder('renderer')
+      this.debugFolder = this.debug.addFolder({ title: 'renderer' })
     }
 
     this.setInstance()
@@ -50,7 +50,7 @@ export default class Renderer {
 
     // Debug
     if (this.debug) {
-      this.debugFolder.addColor(this, 'clearColor').onChange(() => {
+      this.debugFolder.addInput(this, 'clearColor').on('change', () => {
         this.instance.setClearColor(this.clearColor)
       })
     }

@@ -30,7 +30,7 @@ export default class Camera {
 
   setOrbitControls() {
     this.orbitControls = new OrbitControls(this.instance, document.body)
-    this.orbitControls.enabled = this.debug
+    this.orbitControls.enabled = Boolean(this.debug)
     this.orbitControls.screenSpacePanning = true
     this.orbitControls.enableKeys = false
     this.orbitControls.zoomSpeed = 0.25

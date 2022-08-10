@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import GUI from 'lil-gui'
+import { Pane } from 'tweakpane'
 
 import Sizes from './Utils/Sizes.js'
 import Stats from './Utils/Stats.js'
@@ -33,7 +33,7 @@ export default class WebGL {
 
   setDebug() {
     if (window.location.hash === '#debug') {
-      this.debug = new GUI()
+      this.debug = new Pane()
       this.stats = new Stats(true)
 
       const axesHelper = new THREE.AxesHelper(5)
