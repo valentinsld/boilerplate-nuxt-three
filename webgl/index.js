@@ -6,6 +6,7 @@ import Stats from './Utils/Stats.js'
 
 import Renderer from './Renderer.js'
 import Camera from './Camera.js'
+import Raf from './Utils/Raf.js'
 
 export default class WebGL {
   static instance
@@ -17,8 +18,9 @@ export default class WebGL {
     WebGL.instance = this
 
     this.sizes = new Sizes()
-    this.setDebug()
+    this.raf = new Raf()
     this.setScene()
+    this.setDebug()
     this.setCamera()
     this.setRenderer()
 
@@ -26,7 +28,7 @@ export default class WebGL {
       this.resize()
     })
 
-    this.update()
+    this.raf.suscribe('webgl', this.update.bind(this))
   }
 
   setDebug() {
@@ -68,20 +70,9 @@ export default class WebGL {
     this.camera.update()
 
     this.renderer.update()
-
-    window.requestAnimationFrame(() => {
-      this.update()
-    })
   }
 
   resize() {
-    // Config
-    const boundings = this.targetElement.getBoundingClientRect()
-    this.sizes.width = boundings.width
-    this.sizes.height = boundings.height
-
-    this.sizes.pixelRatio = Math.min(Math.max(window.devicePixelRatio, 1), 2)
-
     this.camera.resize()
     this.renderer.resize()
   }
