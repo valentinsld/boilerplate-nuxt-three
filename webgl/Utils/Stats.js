@@ -6,10 +6,7 @@ export default class Stats {
     this.instance.showPanel(0)
 
     this.active = false
-    this.max = 40
-    this.ignoreMaxed = true
 
-    console.log('init Stats', _active)
     if (_active) {
       this.activate()
     }
