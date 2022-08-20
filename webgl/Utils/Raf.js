@@ -1,3 +1,5 @@
+import { Clock } from 'three'
+
 export default class Raf {
   static instance
 
@@ -7,6 +9,7 @@ export default class Raf {
     }
     Raf.instance = this
 
+    this.clock = new Clock()
     this.updateElements = {}
 
     this.loop()
@@ -30,6 +33,8 @@ export default class Raf {
   }
 
   loop() {
+    this.elapsedTime = this.clock.getElapsedTime()
+
     for (const el in this.updateElements) {
       this.updateElements[el].call(null, this.elapsedTime)
     }
