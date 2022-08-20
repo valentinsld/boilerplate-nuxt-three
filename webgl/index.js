@@ -43,13 +43,6 @@ export default class WebGL {
 
   setScene() {
     this.scene = new THREE.Scene()
-
-    // TODO : remove Cube
-    const cube = new THREE.Mesh(
-      new THREE.BoxGeometry(1, 1, 1),
-      new THREE.MeshBasicMaterial({ color: 0xff0000 })
-    )
-    this.scene.add(cube)
   }
 
   setCamera() {
