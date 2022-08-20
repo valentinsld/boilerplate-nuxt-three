@@ -13,6 +13,6 @@ module.exports = {
   // add your custom rules here
   rules: {
     indent: ['error', 2],
-    'no-console': ['error', { allow: ['warn', 'error'] }],
+    'no-console': 'off',
   },
 }
