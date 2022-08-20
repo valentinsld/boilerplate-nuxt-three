@@ -3,14 +3,14 @@ import Raf from '../Utils/Raf.js'
 
 import WebGL from '../index.js'
 
-export default class Cube {
+export default class SceneCube {
   static singleton
 
   constructor(_options = {}) {
-    if (Cube.singleton) {
-      return Cube.singleton
+    if (SceneCube.singleton) {
+      return SceneCube.singleton
     }
-    Cube.singleton = this
+    SceneCube.singleton = this
 
     this.WebGL = new WebGL()
     this.Raf = new Raf()
@@ -20,10 +20,13 @@ export default class Cube {
   }
 
   init() {
-    this.instance = new THREE.Mesh(
+    this.instance = new THREE.Group()
+
+    this.cube = new THREE.Mesh(
       new THREE.BoxGeometry(1, 1, 1),
-      new THREE.MeshBasicMaterial({ color: 0xff0000 })
+      new THREE.MeshBasicMaterial({ color: 0x0000ff })
     )
+    this.instance.add(this.cube)
 
     this.scene.add(this.instance)
   }
@@ -36,7 +39,7 @@ export default class Cube {
   }
 
   animRotation(e) {
-    this.instance.rotation.x = e * 0.4
-    this.instance.rotation.y = e * 0.2
+    this.cube.rotation.x = e * 0.4
+    this.cube.rotation.y = e * 0.2
   }
 }

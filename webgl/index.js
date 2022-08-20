@@ -73,6 +73,6 @@ export default class WebGL {
   destroy() {
     this.renderer.instance.domElement.remove()
     if (this.stats) this.stats.destroy()
-    if (this.debug) this.debug.destroy()
+    if (this.debug) this.debug.dispose()
   }
 }

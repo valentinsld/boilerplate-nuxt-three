@@ -1,5 +1,5 @@
 <template>
-  <Nuxt />
+  <Nuxt style="position: relative; z-index: 1" />
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
   },
   mounted() {
     this.webgl = new WebGL()
-    this.webgl.appendCanvas(this.$el)
+    this.webgl.appendCanvas(this.$el.parentElement)
   },
   destroyed() {
     this.webgl.destroy()

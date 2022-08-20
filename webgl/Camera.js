@@ -23,7 +23,7 @@ export default class Camera {
       150
     )
     this.instance.rotation.reorder('YXZ')
-    this.instance.position.set(5, 5, 5)
+    this.instance.position.set(0, 7, 7)
 
     this.scene.add(this.instance)
   }
