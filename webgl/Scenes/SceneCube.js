@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import anime from 'animejs'
 import Raf from '../Utils/Raf.js'
 
 import WebGL from '../index.js'
@@ -41,5 +42,23 @@ export default class SceneCube {
   animRotation(e) {
     this.cube.rotation.x = e * 0.4
     this.cube.rotation.y = e * 0.2
+  }
+
+  centerCamera() {
+    const camera = this.WebGL.camera.instance
+    const orbitControls = this.WebGL.camera.orbitControls
+
+    anime({
+      targets: camera.position,
+      x: this.instance.position.x,
+      y: 7,
+      z: 7,
+      easing: 'easeOutQuart',
+    })
+    anime({
+      targets: orbitControls.target,
+      ...this.instance.position,
+      easing: 'easeOutQuart',
+    })
   }
 }

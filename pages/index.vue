@@ -1,6 +1,8 @@
 <template>
   <div style="padding: 50px">
-    <button>Test</button>
+    <button @click="goToTorus">Go To Torus</button>
+    <button @click="goToCube">Go To Cube</button>
+    <button @click="goToCylinder">Go To Cylinder</button>
   </div>
 </template>
 
@@ -17,6 +19,17 @@ export default {
     this.sceneTorus = new SceneTorus()
 
     this.sceneCube.startRotation()
+  },
+  methods: {
+    goToCube() {
+      this.sceneCube.centerCamera()
+    },
+    goToCylinder() {
+      this.sceneCylinder.centerCamera()
+    },
+    goToTorus() {
+      this.sceneTorus.centerCamera()
+    },
   },
 }
 </script>
