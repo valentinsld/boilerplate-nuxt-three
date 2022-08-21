@@ -46,7 +46,8 @@ export default class SceneCylinder {
     this.cylinder.rotation.y = e * 0.2
   }
 
-  centerCamera() {
+  centerCamera(duration = 1000) {
+    console.log('center camera cylinder', { duration })
     const camera = this.WebGL.camera.instance
     const orbitControls = this.WebGL.camera.orbitControls
 
@@ -56,11 +57,13 @@ export default class SceneCylinder {
       y: 7,
       z: 7,
       easing: 'easeOutQuart',
+      duration,
     })
     anime({
       targets: orbitControls.target,
       ...this.instance.position,
       easing: 'easeOutQuart',
+      duration,
     })
   }
 }

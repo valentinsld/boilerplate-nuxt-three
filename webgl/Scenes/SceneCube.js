@@ -44,7 +44,7 @@ export default class SceneCube {
     this.cube.rotation.y = e * 0.2
   }
 
-  centerCamera() {
+  centerCamera(duration = 1000) {
     const camera = this.WebGL.camera.instance
     const orbitControls = this.WebGL.camera.orbitControls
 
@@ -54,11 +54,13 @@ export default class SceneCube {
       y: 7,
       z: 7,
       easing: 'easeOutQuart',
+      duration,
     })
     anime({
       targets: orbitControls.target,
       ...this.instance.position,
       easing: 'easeOutQuart',
+      duration,
     })
   }
 }

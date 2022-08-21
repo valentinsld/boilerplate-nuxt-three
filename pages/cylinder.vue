@@ -7,15 +7,15 @@
 </template>
 
 <script>
-import SceneCube from '~/webgl/Scenes/SceneCube'
+import SceneCylinder from '~/webgl/Scenes/SceneCylinder'
 
 export default {
-  name: 'CubePage',
+  name: 'CylinderPage',
   beforeRouteEnter(to, from, next) {
     next(() => {
-      const sceneCube = new SceneCube()
+      const sceneCylinder = new SceneCylinder()
 
-      sceneCube.centerCamera(from.name ? 1000 : 0)
+      sceneCylinder.centerCamera(from.name ? 1000 : 0)
     })
   },
 }

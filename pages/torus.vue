@@ -7,15 +7,15 @@
 </template>
 
 <script>
-import SceneCube from '~/webgl/Scenes/SceneCube'
+import SceneTorus from '~/webgl/Scenes/SceneTorus'
 
 export default {
-  name: 'CubePage',
+  name: 'TorusPage',
   beforeRouteEnter(to, from, next) {
     next(() => {
-      const sceneCube = new SceneCube()
+      const sceneTorus = new SceneTorus()
 
-      sceneCube.centerCamera(from.name ? 1000 : 0)
+      sceneTorus.centerCamera(from.name ? 1000 : 0)
     })
   },
 }
