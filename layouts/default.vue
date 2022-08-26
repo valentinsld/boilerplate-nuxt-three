@@ -7,6 +7,7 @@ import WebGL from '~/webgl/index'
 
 export default {
   name: 'LayoutDefault',
+  transition: 'fade',
   data() {
     return {
       webgl: null,
@@ -21,3 +22,15 @@ export default {
   },
 }
 </script>
+
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
