@@ -39,6 +39,10 @@ export default class SceneCube {
     this.Raf.suscribe('rotateCube', this.animRotation.bind(this))
   }
 
+  stopRotation() {
+    this.Raf.unsuscribe('rotateCube', this.animRotation.bind(this))
+  }
+
   animRotation(e) {
     this.cube.rotation.x = e * 0.4
     this.cube.rotation.y = e * 0.2
