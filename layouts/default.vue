@@ -1,5 +1,9 @@
 <template>
-  <Nuxt style="position: relative; z-index: 1" />
+  <div>
+    <ExtraLinks />
+
+    <Nuxt style="position: relative; z-index: 1" />
+  </div>
 </template>
 
 <script>
