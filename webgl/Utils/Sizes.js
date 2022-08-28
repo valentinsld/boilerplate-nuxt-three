@@ -1,15 +1,18 @@
 import EventEmitter from './EventEmitter.js'
 
 export default class Sizes extends EventEmitter {
-  /**
-   * Constructor
-   */
+  static instance
+
   constructor() {
     super()
 
+    if (Sizes.instance) {
+      return Sizes.instance
+    }
+    Sizes.instance = this
+
     // Resize event
-    this.resize = this.resize.bind(this)
-    window.addEventListener('resize', this.resize)
+    window.addEventListener('resize', this.resize.bind(this))
 
     this.resize()
   }

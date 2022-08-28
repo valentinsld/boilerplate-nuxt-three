@@ -4,6 +4,7 @@ import Raf from '../Utils/Raf.js'
 import { getPositionOutOfScreen } from '../Utils/index.js'
 
 import WebGL from '../index.js'
+import Sizes from '../Utils/Sizes.js'
 
 export default class SceneCylinder {
   static singleton
@@ -14,12 +15,15 @@ export default class SceneCylinder {
     }
     SceneCylinder.singleton = this
 
+    this.inView = false
     this.WebGL = new WebGL()
     this.Raf = new Raf()
+    this.Sizes = new Sizes()
     this.scene = this.WebGL.scene
 
     this.init()
     this.resize()
+    this.Sizes.on('resize', this.resize.bind(this))
   }
 
   init() {
@@ -36,12 +40,14 @@ export default class SceneCylinder {
 
   resize() {
     this.instance.position.x = getPositionOutOfScreen().x
+    if (this.inView) this.centerCamera(0)
   }
 
   //
-  // Rotation
+  // Animation
   //
-  startRotation() {
+  entered() {
+    this.inView = true
     this.Raf.suscribe('rotateCylinder', this.animRotation.bind(this))
   }
 
@@ -50,6 +56,14 @@ export default class SceneCylinder {
     this.cylinder.rotation.y = e * 0.2
   }
 
+  exit() {
+    this.inView = false
+    this.Raf.unsuscribe('rotateCylinder')
+  }
+
+  //
+  // centerCamera
+  //
   centerCamera(duration = 1000) {
     const camera = this.WebGL.camera.instance
     const orbitControls = this.WebGL.camera.orbitControls

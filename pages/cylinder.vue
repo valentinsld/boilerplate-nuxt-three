@@ -16,7 +16,16 @@ export default {
       const sceneCylinder = new SceneCylinder()
 
       sceneCylinder.centerCamera(from.name ? 1000 : 0)
+
+      sceneCylinder.entered()
     })
+  },
+  destroyed() {
+    setTimeout(() => {
+      const sceneCylinder = new SceneCylinder()
+
+      sceneCylinder.exit()
+    }, 1000)
   },
 }
 </script>

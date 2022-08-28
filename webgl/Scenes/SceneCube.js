@@ -13,6 +13,7 @@ export default class SceneCube {
     }
     SceneCube.singleton = this
 
+    this.inView = false
     this.WebGL = new WebGL()
     this.Raf = new Raf()
     this.scene = this.WebGL.scene
@@ -33,14 +34,11 @@ export default class SceneCube {
   }
 
   //
-  // Rotation
+  // Animation
   //
-  startRotation() {
+  entered() {
+    this.inView = true
     this.Raf.suscribe('rotateCube', this.animRotation.bind(this))
-  }
-
-  stopRotation() {
-    this.Raf.unsuscribe('rotateCube', this.animRotation.bind(this))
   }
 
   animRotation(e) {
@@ -48,6 +46,14 @@ export default class SceneCube {
     this.cube.rotation.y = e * 0.2
   }
 
+  exit() {
+    this.inView = false
+    this.Raf.unsuscribe('rotateCube', this.animRotation.bind(this))
+  }
+
+  //
+  // centerCamera
+  //
   centerCamera(duration = 1000) {
     const camera = this.WebGL.camera.instance
     const orbitControls = this.WebGL.camera.orbitControls

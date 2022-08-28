@@ -17,14 +17,14 @@ export default {
 
       sceneCube.centerCamera(from.name ? 1000 : 0)
 
-      sceneCube.startRotation()
+      sceneCube.entered()
     })
   },
   destroyed() {
     setTimeout(() => {
       const sceneCube = new SceneCube()
 
-      sceneCube.stopRotation()
+      sceneCube.exit()
     }, 1000)
   },
 }
