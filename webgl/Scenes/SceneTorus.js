@@ -19,11 +19,11 @@ export default class SceneCylinder {
     this.scene = this.WebGL.scene
 
     this.init()
+    this.resize()
   }
 
   init() {
     this.instance = new THREE.Group()
-    this.instance.position.x = getPositionOutOfScreen(-5)
 
     this.cylinder = new THREE.Mesh(
       new THREE.TorusGeometry(1, 0.5, 16, 50),
@@ -32,6 +32,10 @@ export default class SceneCylinder {
     this.instance.add(this.cylinder)
 
     this.scene.add(this.instance)
+  }
+
+  resize() {
+    this.instance.position.x = -getPositionOutOfScreen().x
   }
 
   //
