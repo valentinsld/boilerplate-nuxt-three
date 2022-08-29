@@ -1,6 +1,8 @@
 <template>
   <div class="extraLinks">
-    <a href="https://github.com/valentinsld/boilerplate-nuxt-three">Github</a>
+    <a href="https://github.com/valentinsld/boilerplate-nuxt-three"
+      >Boilerplate on Github</a
+    >
     <a href="https://www.valentinsld.fr">by Valentin Sld</a>
   </div>
 </template>
