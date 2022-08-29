@@ -37,7 +37,7 @@ export default class SceneCylinder {
     )
 
     this.light = new THREE.PointLight(0xffffff, 14, 12, 1)
-    this.light.position.copy(this.WebGL.camera.instance.position)
+    this.light.position.copy(this.WebGL.camera.initPosition)
 
     this.instance.add(...[this.light, this.torus])
     this.scene.add(this.instance)

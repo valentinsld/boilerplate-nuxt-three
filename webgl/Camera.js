@@ -10,6 +10,12 @@ export default class Camera {
     this.sizes = this.WebGL.sizes
     this.scene = this.WebGL.scene
 
+    this.initPosition = {
+      x: 0,
+      y: 7,
+      z: 7,
+    }
+
     this.setInstance()
     this.setOrbitControls()
   }
@@ -23,7 +29,7 @@ export default class Camera {
       150
     )
     this.instance.rotation.reorder('YXZ')
-    this.instance.position.set(0, 7, 7)
+    this.instance.position.copy(this.initPosition)
 
     this.scene.add(this.instance)
   }
