@@ -29,12 +29,17 @@ export default class SceneCylinder {
   init() {
     this.instance = new THREE.Group()
 
-    this.cylinder = new THREE.Mesh(
-      new THREE.TorusGeometry(1, 0.5, 16, 50),
-      new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+    this.torus = new THREE.Mesh(
+      new THREE.TorusGeometry(1, 0.5, 8, 32),
+      new THREE.MeshPhysicalMaterial({
+        color: 0x00dc82,
+      })
     )
-    this.instance.add(this.cylinder)
 
+    this.light = new THREE.PointLight(0xffffff, 14, 12, 1)
+    this.light.position.copy(this.WebGL.camera.instance.position)
+
+    this.instance.add(...[this.light, this.torus])
     this.scene.add(this.instance)
   }
 
@@ -52,8 +57,8 @@ export default class SceneCylinder {
   }
 
   animRotation(e) {
-    this.cylinder.rotation.x = e * 0.4
-    this.cylinder.rotation.y = e * 0.2
+    this.torus.rotation.x = e * 0.4
+    this.torus.rotation.y = e * 0.2
   }
 
   exit() {

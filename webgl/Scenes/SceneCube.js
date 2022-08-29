@@ -26,10 +26,15 @@ export default class SceneCube {
 
     this.cube = new THREE.Mesh(
       new THREE.BoxGeometry(1, 1, 1),
-      new THREE.MeshBasicMaterial({ color: 0x0000ff })
+      new THREE.MeshPhysicalMaterial({
+        color: 0x00dc82,
+      })
     )
-    this.instance.add(this.cube)
 
+    this.light = new THREE.PointLight(0xffffff, 14, 12, 1)
+    this.light.position.copy(this.WebGL.camera.instance.position)
+
+    this.instance.add(...[this.light, this.cube])
     this.scene.add(this.instance)
   }
 

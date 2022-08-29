@@ -30,11 +30,16 @@ export default class SceneCylinder {
     this.instance = new THREE.Group()
 
     this.cylinder = new THREE.Mesh(
-      new THREE.CylinderGeometry(1, 1, 4, 16),
-      new THREE.MeshBasicMaterial({ color: 0xff0000 })
+      new THREE.CylinderGeometry(0.5, 0.5, 2, 8),
+      new THREE.MeshPhysicalMaterial({
+        color: 0x00dc82,
+      })
     )
-    this.instance.add(this.cylinder)
 
+    this.light = new THREE.PointLight(0xffffff, 14, 12, 1)
+    this.light.position.copy(this.WebGL.camera.instance.position)
+
+    this.instance.add(...[this.light, this.cylinder])
     this.scene.add(this.instance)
   }
 
