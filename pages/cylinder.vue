@@ -13,7 +13,7 @@ export default {
     next(() => {
       const sceneCylinder = new SceneCylinder()
 
-      sceneCylinder.centerCamera(from.name ? 1000 : 0)
+      sceneCylinder.centerCamera(from.name ? 1500 : 0)
 
       sceneCylinder.entered()
     })

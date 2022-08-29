@@ -54,7 +54,7 @@ export default class SceneCube {
   //
   // centerCamera
   //
-  centerCamera(duration = 1000) {
+  centerCamera(duration = 1500) {
     const camera = this.WebGL.camera.instance
     const orbitControls = this.WebGL.camera.orbitControls
 

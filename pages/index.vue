@@ -14,7 +14,7 @@ export default {
     next(() => {
       const sceneCube = new SceneCube()
 
-      sceneCube.centerCamera(from.name ? 1000 : 0)
+      sceneCube.centerCamera(from.name ? 1500 : 0)
 
       sceneCube.entered()
     })

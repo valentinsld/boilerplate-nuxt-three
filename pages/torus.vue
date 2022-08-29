@@ -13,7 +13,7 @@ export default {
     next(() => {
       const sceneTorus = new SceneTorus()
 
-      sceneTorus.centerCamera(from.name ? 1000 : 0)
+      sceneTorus.centerCamera(from.name ? 1500 : 0)
 
       sceneTorus.entered()
     })
