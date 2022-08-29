@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 50px">
+  <div>
     <nuxt-link to="/cube" class="linkPage -right">Go To Cube</nuxt-link>
   </div>
 </template>
