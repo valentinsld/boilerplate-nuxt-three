@@ -13,17 +13,36 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .extraLinks {
   position: absolute;
   z-index: 10;
   bottom: 20px;
   right: 40px;
   display: flex;
+
+  transition: opacity 400ms var(--custom-ease);
+
+  &:hover a {
+    opacity: 0.5;
+  }
 }
 
 .extraLinks a {
-  margin-left: 20px;
-  color: white;
+  --padding-x: 10px;
+  padding-left: var(--padding-x);
+  padding-right: var(--padding-x);
+  color: var(--primary);
+
+  transition: opacity 400ms var(--custom-ease);
+
+  &::after {
+    left: var(--padding-x);
+    right: var(--padding-x);
+  }
+
+  &:hover {
+    opacity: 1 !important;
+  }
 }
 </style>
