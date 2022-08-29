@@ -7,15 +7,20 @@ import Stats from './Utils/Stats.js'
 import Renderer from './Renderer.js'
 import Camera from './Camera.js'
 import Raf from './Utils/Raf.js'
+import EventEmitter from './Utils/EventEmitter.js'
 
-export default class WebGL {
+export default class WebGL extends EventEmitter {
   static instance
 
   constructor(_options = {}) {
+    super()
+
     if (WebGL.instance) {
       return WebGL.instance
     }
     WebGL.instance = this
+
+    this.started = false
 
     this.sizes = new Sizes()
     this.raf = new Raf()
@@ -29,6 +34,9 @@ export default class WebGL {
     })
 
     this.raf.suscribe('webgl', this.update.bind(this))
+
+    this.started = true
+    this.trigger('endLoading')
   }
 
   setDebug() {

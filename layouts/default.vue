@@ -3,6 +3,8 @@
     <Logo />
     <ExtraLinks />
 
+    <Loader />
+
     <Nuxt style="position: relative; z-index: 1" />
   </div>
 </template>
