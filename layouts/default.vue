@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Logo />
     <ExtraLinks />
 
     <Nuxt style="position: relative; z-index: 1" />
