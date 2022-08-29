@@ -1,8 +1,7 @@
 <template>
-  <div style="padding: 50px">
-    <nuxt-link to="/torus">Go To Torus</nuxt-link>
-    <!-- <nuxt-link to="/cube">Go To Cube</nuxt-link> -->
-    <nuxt-link to="/cylinder">Go To Cylinder</nuxt-link>
+  <div>
+    <nuxt-link to="/torus" class="linkPage">Go To Torus</nuxt-link>
+    <nuxt-link to="/cylinder" class="linkPage -right">Go To Cylinder</nuxt-link>
   </div>
 </template>
 

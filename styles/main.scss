@@ -38,6 +38,8 @@ a {
 
   text-decoration: none;
 
+  transition: opacity 400ms var(--custom-ease);
+
   &::after {
     content: '';
 

@@ -34,8 +34,6 @@ export default {
   padding-right: var(--padding-x);
   color: var(--primary);
 
-  transition: opacity 400ms var(--custom-ease);
-
   &::after {
     left: var(--padding-x);
     right: var(--padding-x);
