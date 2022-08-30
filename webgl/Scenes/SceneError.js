@@ -38,7 +38,7 @@ export default class SceneError {
     const color = 0x00dc82
 
     const loader = new FontLoader()
-    loader.load('/fonts/DM-Serif-Display_Regular.json', (font) => {
+    loader.load('./fonts/DM-Serif-Display_Regular.json', (font) => {
       //
       // Add error num
       //
