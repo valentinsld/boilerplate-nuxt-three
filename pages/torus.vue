@@ -10,10 +10,10 @@ import SceneTorus from '~/webgl/Scenes/SceneTorus'
 export default {
   name: 'TorusPage',
   beforeRouteEnter(to, from, next) {
-    next(() => {
+    next((that) => {
       const sceneTorus = new SceneTorus()
 
-      sceneTorus.centerCamera(from.name ? 1500 : 0)
+      sceneTorus.centerCamera(that.$nuxt.context.from ? 1500 : 0)
 
       sceneTorus.entered()
     })

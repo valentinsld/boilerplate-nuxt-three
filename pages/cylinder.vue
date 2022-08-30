@@ -10,10 +10,10 @@ import SceneCylinder from '~/webgl/Scenes/SceneCylinder'
 export default {
   name: 'CylinderPage',
   beforeRouteEnter(to, from, next) {
-    next(() => {
+    next((that) => {
       const sceneCylinder = new SceneCylinder()
 
-      sceneCylinder.centerCamera(from.name ? 1500 : 0)
+      sceneCylinder.centerCamera(that.$nuxt.context.from ? 1500 : 0)
 
       sceneCylinder.entered()
     })

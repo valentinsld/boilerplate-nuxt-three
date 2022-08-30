@@ -11,10 +11,10 @@ import SceneCube from '~/webgl/Scenes/SceneCube'
 export default {
   name: 'CubePage',
   beforeRouteEnter(to, from, next) {
-    next(() => {
+    next((that) => {
       const sceneCube = new SceneCube()
 
-      sceneCube.centerCamera(from.name ? 1500 : 0)
+      sceneCube.centerCamera(that.$nuxt.context.from ? 1500 : 0)
 
       sceneCube.entered()
     })
