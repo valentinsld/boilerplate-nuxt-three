@@ -38,75 +38,72 @@ export default class SceneError {
     const color = 0x00dc82
 
     const loader = new FontLoader()
-    loader.load(
-      'https://threejs.org/examples/fonts/helvetiker_regular.typeface.json',
-      (font) => {
-        //
-        // Add error num
-        //
-        const matDark = new THREE.LineBasicMaterial({
-          color,
-          side: THREE.FrontSide,
-        })
+    loader.load('/fonts/DM-Serif-Display_Regular.json', (font) => {
+      //
+      // Add error num
+      //
+      const matDark = new THREE.LineBasicMaterial({
+        color,
+        side: THREE.FrontSide,
+      })
 
-        const shapes = font.generateShapes(this.text, 10)
-        const geometry = new THREE.ShapeGeometry(shapes)
-        geometry.computeBoundingBox()
-        const xMid =
-          -0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x)
+      const shapes = font.generateShapes(this.text, 10)
+      const geometry = new THREE.ShapeGeometry(shapes)
+      geometry.computeBoundingBox()
+      const xMid =
+        -0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x)
 
-        // make line shape ( N.B. edge view remains visible )
-        const holeShapes = []
+      // make line shape ( N.B. edge view remains visible )
+      const holeShapes = []
 
-        for (let i = 0; i < shapes.length; i++) {
-          const shape = shapes[i]
+      for (let i = 0; i < shapes.length; i++) {
+        const shape = shapes[i]
 
-          if (shape.holes && shape.holes.length > 0) {
-            for (let j = 0; j < shape.holes.length; j++) {
-              const hole = shape.holes[j]
-              holeShapes.push(hole)
-            }
+        if (shape.holes && shape.holes.length > 0) {
+          for (let j = 0; j < shape.holes.length; j++) {
+            const hole = shape.holes[j]
+            holeShapes.push(hole)
           }
         }
-
-        shapes.push.apply(shapes, holeShapes)
-
-        this.textErrorNum = new THREE.Object3D()
-        for (let i = 0; i < shapes.length; i++) {
-          const shape = shapes[i]
-
-          const points = shape.getPoints()
-          const geometry = new THREE.BufferGeometry().setFromPoints(points)
-
-          geometry.translate(xMid, 0, 0)
-
-          const lineMesh = new THREE.Line(geometry, matDark)
-          this.textErrorNum.add(lineMesh)
-        }
-
-        this.instance.add(this.textErrorNum)
-
-        //
-        // Text error
-        //
-        const matLite = new THREE.MeshBasicMaterial({
-          color,
-          transparent: true,
-          opacity: 0.4,
-          side: THREE.FrontSide,
-        })
-
-        const shapesError = font.generateShapes('ERROR', 4)
-        const geometryError = new THREE.ShapeGeometry(shapesError)
-        this.textError = new THREE.Mesh(geometryError, matLite)
-        geometryError.computeBoundingBox()
-        const xMidTextError =
-          -0.5 *
-          (geometryError.boundingBox.max.x - geometryError.boundingBox.min.x)
-        this.textError.position.set(xMidTextError, -6, 0)
-        this.instance.add(this.textError)
       }
-    )
+
+      shapes.push.apply(shapes, holeShapes)
+
+      this.textErrorNum = new THREE.Object3D()
+      for (let i = 0; i < shapes.length; i++) {
+        const shape = shapes[i]
+
+        const points = shape.getPoints()
+        const geometry = new THREE.BufferGeometry().setFromPoints(points)
+
+        geometry.translate(xMid, 0, 0)
+
+        const lineMesh = new THREE.Line(geometry, matDark)
+        this.textErrorNum.add(lineMesh)
+      }
+
+      this.instance.add(this.textErrorNum)
+
+      //
+      // Text error
+      //
+      const matLite = new THREE.MeshBasicMaterial({
+        color,
+        transparent: true,
+        opacity: 0.4,
+        side: THREE.FrontSide,
+      })
+
+      const shapesError = font.generateShapes('ERROR', 3)
+      const geometryError = new THREE.ShapeGeometry(shapesError)
+      this.textError = new THREE.Mesh(geometryError, matLite)
+      geometryError.computeBoundingBox()
+      const xMidTextError =
+        -0.5 *
+        (geometryError.boundingBox.max.x - geometryError.boundingBox.min.x)
+      this.textError.position.set(xMidTextError, -6, 0)
+      this.instance.add(this.textError)
+    })
   }
 
   resize() {

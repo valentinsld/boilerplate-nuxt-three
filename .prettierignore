@@ -94,3 +94,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# ignore static
+static/
