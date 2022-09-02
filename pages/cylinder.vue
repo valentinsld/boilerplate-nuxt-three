@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nuxt-link to="/cube" class="linkPage">Go To Cube</nuxt-link>
+    <nuxt-link to="/" class="linkPage">Go To Cube</nuxt-link>
   </div>
 </template>
 

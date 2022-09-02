@@ -40,16 +40,6 @@ export default {
     transpile: ['three'],
   },
 
-  router: {
-    extendRoutes(routes, resolve) {
-      routes.push({
-        name: 'cube',
-        path: '/cube',
-        component: resolve(__dirname, 'pages/index.vue'),
-      })
-    },
-  },
-
   generate: {
     fallback: '404.html',
   },
