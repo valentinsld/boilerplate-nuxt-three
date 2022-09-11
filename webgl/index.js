@@ -12,13 +12,14 @@ import EventEmitter from './Utils/EventEmitter.js'
 export default class WebGL extends EventEmitter {
   static instance
 
-  constructor(_options = {}) {
+  constructor() {
     super()
 
     if (WebGL.instance) {
       return WebGL.instance
     }
     WebGL.instance = this
+    this.canvas = document.querySelector('#canvasWebgl')
 
     this.started = false
 
@@ -58,11 +59,7 @@ export default class WebGL extends EventEmitter {
   }
 
   setRenderer() {
-    this.renderer = new Renderer({ rendererInstance: this.rendererInstance })
-  }
-
-  appendCanvas(el) {
-    el.appendChild(this.renderer.instance.domElement)
+    this.renderer = new Renderer()
   }
 
   update() {

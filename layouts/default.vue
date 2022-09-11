@@ -6,6 +6,8 @@
     <Loader />
 
     <Nuxt style="position: relative; z-index: 1" />
+
+    <canvas id="canvasWebgl" />
   </div>
 </template>
 
@@ -22,7 +24,6 @@ export default {
   },
   mounted() {
     this.webgl = new WebGL()
-    this.webgl.appendCanvas(this.$el.parentElement)
   },
   destroyed() {
     this.webgl.destroy()
