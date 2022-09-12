@@ -2,6 +2,7 @@
   <div>
     <Logo />
     <ExtraLinks />
+    <DebugButton />
 
     <Loader />
 
