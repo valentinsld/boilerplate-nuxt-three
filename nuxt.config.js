@@ -38,6 +38,24 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ['three'],
+    html: {
+      minify: {
+        removeRedundantAttributes: false,
+      },
+    },
+    extend(config, { isDev, isClient }) {
+      // ..
+      config.module.rules.push({
+        test: /\.(glsl|vs|fs|frag|vert)$/,
+        exclude: /node_modules/,
+        use: ['raw-loader'],
+      })
+      // Sets webpack's mode to development if `isDev` is true.
+      if (isDev) {
+        config.mode = 'development'
+      }
+      console.log('Generated at ' + new Date())
+    },
   },
 
   generate: {

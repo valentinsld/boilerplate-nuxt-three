@@ -97,3 +97,8 @@ sw.*
 
 # ignore static
 static/
+
+# ignore shaders
+*.glsl
+*.vert
+*.frag
